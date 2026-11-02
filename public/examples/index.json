@@ -1,0 +1,6 @@
+[
+  { "file": "cube.json", "title": "Commutative cube" },
+  { "file": "layers.json", "title": "Parallel layers" },
+  { "file": "curves.json", "title": "Curves, loops and styles" },
+  { "file": "invalid.json", "title": "Invalid scene (diagnostics)" }
+]

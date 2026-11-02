@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    { "id": "A", "pos": [0, 0, 2], "label": "A" },
+    { "id": "B", "pos": [2, 0, 2], "label": "B" },
+    { "id": "C", "pos": [0, 0, 0], "label": "C" },
+    { "id": "D", "pos": [2, 0, 0], "label": "D" },
+    { "id": "A'", "pos": [0, 2, 2], "label": "A'" },
+    { "id": "B'", "pos": [2, 2, 2], "label": "B'" },
+    { "id": "C'", "pos": [0, 2, 0], "label": "C'" },
+    { "id": "D'", "pos": [2, 2, 0], "label": "D'" }
+  ],
+  "arrows": [
+    { "id": "f", "from": "A", "to": "B", "label": "f" },
+    { "id": "g", "from": "A", "to": "C", "label": "g", "theta": 180 },
+    { "id": "h", "from": "B", "to": "D", "label": "h" },
+    { "id": "k", "from": "C", "to": "D", "label": "k", "theta": 180 },
+
+    { "id": "f'", "from": "A'", "to": "B'", "label": "f'" },
+    { "id": "g'", "from": "A'", "to": "C'", "label": "g'", "theta": 180 },
+    { "id": "h'", "from": "B'", "to": "D'", "label": "h'" },
+    { "id": "k'", "from": "C'", "to": "D'", "label": "k'", "theta": 180 },
+
+    { "id": "a", "from": "A", "to": "A'", "label": "\\alpha", "style": { "tail": "hook" } },
+    { "id": "b", "from": "B", "to": "B'", "label": "\\beta" },
+    { "id": "c", "from": "C", "to": "C'", "label": "\\gamma", "theta": 180 },
+    {
+      "id": "d",
+      "from": "D",
+      "to": "D'",
+      "label": "\\delta",
+      "theta": 180,
+      "style": { "shaft": "dashed" }
+    }
+  ]
+}

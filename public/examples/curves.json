@@ -1,0 +1,93 @@
+{
+  "nodes": [
+    { "id": "C", "pos": [0, 0, 0], "label": "\\mathcal{C}" },
+    { "id": "D", "pos": [3, 0, 0], "label": "\\mathcal{D}" },
+    { "id": "P", "pos": [0, 0, -3], "label": "P" },
+    { "id": "Q", "pos": [3, 0, -3], "label": "Q" },
+    { "id": "U", "pos": [1.5, -1.5, -1.5], "label": "U" },
+    { "id": "V", "pos": [1.5, 1.5, -1.5], "label": "V" },
+    { "id": "S", "pos": [6, 0, 0], "label": "S" },
+    { "id": "T", "pos": [6, 0, -3], "label": "T" },
+    { "id": "bad", "pos": [8.5, 0, -1.5], "label": "\\frac{1}{" }
+  ],
+  "arrows": [
+    { "id": "F", "from": "C", "to": "D", "label": "F", "bend": 0.5 },
+    { "id": "G", "from": "D", "to": "C", "label": "G", "bend": 0.5, "theta": 180 },
+    {
+      "id": "H",
+      "from": "C",
+      "to": "D",
+      "label": "H",
+      "bend": 0.6,
+      "theta": -90,
+      "style": { "color": "#b45309" }
+    },
+
+    { "id": "u", "from": "P", "to": "Q", "label": "u", "shift": 4 },
+    {
+      "id": "v",
+      "from": "P",
+      "to": "Q",
+      "label": { "text": "v", "offset": -6 },
+      "shift": -4,
+      "style": { "head": "twohead" }
+    },
+    {
+      "id": "w",
+      "from": "Q",
+      "to": "P",
+      "label": { "text": "w", "offset": -6 },
+      "bend": -0.8,
+      "style": { "shaft": "dashed" }
+    },
+
+    {
+      "id": "front",
+      "from": "U",
+      "to": "V",
+      "label": { "text": "x", "t": 0.25 },
+      "style": { "color": "#15803d" }
+    },
+    { "id": "diag", "from": "C", "to": "Q", "label": { "text": "y", "t": 0.75 } },
+
+    {
+      "id": "e",
+      "from": "S",
+      "to": "S",
+      "label": "e",
+      "loop": { "axis": [1, 0, 0], "radius": 0.45 }
+    },
+    {
+      "id": "sigma",
+      "from": "T",
+      "to": "T",
+      "label": "\\sigma",
+      "theta": 180,
+      "loop": { "axis": [1, 0, 0], "radius": 0.45 },
+      "style": { "color": "#7c3aed" }
+    },
+    {
+      "id": "m",
+      "from": "S",
+      "to": "T",
+      "label": "m",
+      "theta": 180,
+      "style": { "tail": "hook'", "head": "twohead" }
+    },
+    {
+      "id": "mu",
+      "from": "T",
+      "to": "S",
+      "label": "\\mu",
+      "bend": 0.6,
+      "style": { "double": true, "tail": "hook" }
+    },
+    {
+      "id": "toBad",
+      "from": "S",
+      "to": "bad",
+      "label": { "text": "\\text{bad label}", "offset": 6 },
+      "style": { "tail": "hook", "shaft": "dotted" }
+    }
+  ]
+}

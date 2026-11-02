@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c3d</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <header id="toolbar">
+      <strong class="brand">c3d</strong>
+      <select id="example" title="Example scenes">
+        <option value="" disabled>Examples</option>
+      </select>
+      <button id="open" title="Open a local JSON scene">Open JSON…</button>
+      <input id="file" type="file" accept=".json,application/json" hidden />
+      <span class="sep"></span>
+      <button id="cmd-projection" title="Toggle perspective / orthographic (P)">Projection</button>
+      <button id="cmd-oblique" title="Oblique orthographic preset (O)">Oblique</button>
+      <button id="cmd-sizing" title="Toggle diagram / spatial sizing (G)">Sizing</button>
+      <button id="cmd-normals" title="Toggle view-snapped normals (N)">Normals</button>
+      <button id="cmd-smaller" title="Smaller ([)">−</button>
+      <button id="cmd-larger" title="Larger (])">+</button>
+      <span class="sep"></span>
+      <button id="cmd-fit" title="Fit scene (F)">Fit</button>
+      <button id="cmd-reset" title="Reset view (R)">Reset</button>
+      <button id="cmd-help" title="Keys (H)">?</button>
+    </header>
+    <!--
+      Label knockout shaped like the label's ink (glyphs, rules and KaTeX SVGs): dilate then erode
+      (a morphological closing) so inter-glyph gaps fill while leaving a thin halo. Radii are in
+      unscaled label pixels, so the halo follows label scaling.
+    -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <filter id="label-halo" x="-50%" y="-50%" width="200%" height="200%">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="5 4" result="grown" />
+        <feMorphology in="grown" operator="erode" radius="3 2" result="closed" />
+        <feFlood />
+        <feComposite in2="closed" operator="in" />
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="label-halo-focused" x="-50%" y="-50%" width="200%" height="200%">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="7 6" result="grown" />
+        <feMorphology in="grown" operator="erode" radius="3 2" result="closed" />
+        <feGaussianBlur in="closed" stdDeviation="1.2" result="blurred" />
+        <feComponentTransfer in="blurred" result="soft">
+          <feFuncA type="linear" slope="2" />
+        </feComponentTransfer>
+        <feFlood />
+        <feComposite in2="soft" operator="in" />
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </svg>
+    <main id="viewport">
+      <svg id="strokes" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="labels"></div>
+      <div id="error" class="panel" hidden></div>
+      <div id="help" class="panel" hidden>
+        <h2>Navigation</h2>
+        <dl>
+          <dt>W A S D</dt>
+          <dd>Fly horizontally along the heading</dd>
+          <dt>Q E</dt>
+          <dd>Down / up along world Z</dd>
+          <dt>Left drag</dt>
+          <dd>Orbit around the pivot (focus, or origin)</dd>
+          <dt>Right drag</dt>
+          <dd>Turn the camera in place</dd>
+          <dt>Scroll</dt>
+          <dd>Zoom (dolly toward the pivot in perspective)</dd>
+          <dt>Click</dt>
+          <dd>Focus a node or arrow as the pivot</dd>
+          <dt>Esc</dt>
+          <dd>Clear focus (pivot returns to origin)</dd>
+          <dt>P</dt>
+          <dd>Perspective / orthographic</dd>
+          <dt>O</dt>
+          <dd>Oblique orthographic preset</dd>
+          <dt>1 2 3</dt>
+          <dd>Front / top / side view</dd>
+          <dt>G</dt>
+          <dd>Diagram / spatial sizing</dd>
+          <dt>N</dt>
+          <dd>Stored / view-snapped normals</dd>
+          <dt>[ ]</dt>
+          <dd>Overall size</dd>
+          <dt>F</dt>
+          <dd>Fit scene</dd>
+          <dt>R</dt>
+          <dd>Reset view</dd>
+          <dt>H ?</dt>
+          <dd>Toggle this reference</dd>
+        </dl>
+      </div>
+      <div id="status"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

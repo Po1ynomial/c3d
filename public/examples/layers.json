@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    { "id": "X", "pos": [0, 0, 2], "label": "X" },
+    { "id": "Y", "pos": [3, 0, 2], "label": "Y" },
+    { "id": "Z", "pos": [1.5, 0, 0], "label": "Z" },
+    { "id": "FX", "pos": [0, 3, 2], "label": "FX" },
+    { "id": "FY", "pos": [3, 3, 2], "label": "FY" },
+    { "id": "FZ", "pos": [1.5, 3, 0], "label": "FZ" },
+    { "id": "GX", "pos": [0, 6, 2], "label": "GFX", "color": "#1d4ed8" },
+    { "id": "GY", "pos": [3, 6, 2], "label": "GFY", "color": "#1d4ed8" },
+    { "id": "GZ", "pos": [1.5, 6, 0], "label": "GFZ", "color": "#1d4ed8" }
+  ],
+  "arrows": [
+    { "from": "X", "to": "Y", "label": "f" },
+    { "from": "Y", "to": "Z", "label": "g" },
+    { "from": "X", "to": "Z", "label": "g \\circ f", "theta": 180 },
+
+    { "from": "FX", "to": "FY", "label": "Ff" },
+    { "from": "FY", "to": "FZ", "label": "Fg" },
+    { "from": "FX", "to": "FZ", "label": "F(g \\circ f)", "theta": 180 },
+
+    { "from": "GX", "to": "GY", "label": "GFf", "style": { "color": "#1d4ed8" } },
+    { "from": "GY", "to": "GZ", "label": "GFg", "style": { "color": "#1d4ed8" } },
+    {
+      "from": "GX",
+      "to": "GZ",
+      "label": "GF(g \\circ f)",
+      "theta": 180,
+      "style": { "color": "#1d4ed8" }
+    },
+
+    { "from": "X", "to": "FX", "style": { "tail": "mapsto", "shaft": "dotted" } },
+    { "from": "Y", "to": "FY", "style": { "tail": "mapsto", "shaft": "dotted" } },
+    { "from": "Z", "to": "FZ", "style": { "tail": "mapsto", "shaft": "dotted" } },
+    { "from": "FX", "to": "GX", "label": "\\eta_X", "style": { "double": true } },
+    { "from": "FY", "to": "GY", "label": "\\eta_Y", "style": { "double": true } },
+    { "from": "FZ", "to": "GZ", "label": "\\eta_Z", "theta": 180, "style": { "double": true } }
+  ]
+}

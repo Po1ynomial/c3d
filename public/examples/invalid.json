@@ -1,0 +1,18 @@
+{
+  "nodes": [
+    { "id": "A", "pos": [0, 0, 0] },
+    { "id": "A", "pos": [1, 0] },
+    { "id": "B", "pos": [2, 0, 0], "colour": "red" }
+  ],
+  "arrows": [
+    { "id": "f", "from": "A", "to": "Missing" },
+    {
+      "id": "g",
+      "from": "A",
+      "to": "B",
+      "style": { "head": "triangle" },
+      "label": { "text": "g", "t": 2 }
+    },
+    { "from": "B", "to": "B", "bend": 1 }
+  ]
+}
